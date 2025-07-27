@@ -1,0 +1,88 @@
+---
+{
+  /*
+  @Author: SanXiaoXing
+  @Date: 2025-07-27 19:07:56
+  @Description: 滚动遮罩组件
+  */
+}
+// MaskScroll.astro - 滚动遮罩组件
+// 接收背景视频URL或背景图片URL作为参数
+
+interface Props {
+  videoSrc?: string;
+  imageSrc?: string;
+  maskText?: string;
+}
+
+const { videoSrc, imageSrc, maskText = "SanXiaoXing" } = Astro.props;
+---
+
+<div class="scroll-mask-container">
+  {
+    videoSrc && (
+      <video class="background-video" autoplay loop muted>
+        <source src={videoSrc} type="video/mp4" />
+      </video>
+    )
+  }
+
+  {
+    imageSrc && (
+      <div
+        class="background-image"
+        style={`background-image: url(${imageSrc})`}
+      />
+    )
+  }
+
+  <div class="mask-overlay">
+    <h2 class="mask-text">{maskText}</h2>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  // 注册ScrollTrigger插件
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 创建时间轴动画
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".scroll-mask-container",
+      scrub: 1,
+      pin: true,
+      start: "top top",
+      end: "+=600",
+    },
+  });
+
+  // 文字放大动画（前70%的时间）
+  tl.to(".mask-text", {
+    scale: 200,
+    duration: 0.7,
+    ease: "none",
+  })
+    // 文字和遮罩层消失动画（后30%的时间）
+    .to(
+      ".mask-text",
+      {
+        opacity: 0,
+        scale: 600,
+        duration: 0.3,
+        ease: "none",
+      },
+      "-=0.1",
+    )
+    .to(
+      ".mask-overlay",
+      {
+        opacity: 0,
+        duration: 0.3,
+        ease: "none",
+      },
+      "-=0.3",
+    );
+</script>

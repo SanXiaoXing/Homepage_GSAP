@@ -1,0 +1,429 @@
+/* Global CSS for GSAP Scrolling Mask Animation */
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+/* Utility Classes - Tailwind-like */
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.max-w-6xl {
+  max-width: 1200px;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.py-25 {
+  padding-top: 6.25rem;
+  padding-bottom: 6.25rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
+}
+
+/* Flexbox Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Position Utilities */
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-minus-1 {
+  z-index: -1;
+}
+
+/* Background Utilities */
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.bg-gray-800 {
+  background-color: #1f2937;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+}
+
+.bg-gradient-tertiary {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+/* Text Utilities */
+.text-white {
+  color: #fff;
+}
+
+.text-gray-600 {
+  color: #6b7280;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+}
+
+.text-7xl {
+  font-size: 4.5rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.tracking-wider {
+  letter-spacing: 0.1em;
+}
+
+.opacity-90 {
+  opacity: 0.9;
+}
+
+.opacity-95 {
+  opacity: 0.95;
+}
+
+/* Border and Shadow Utilities */
+.rounded-xl {
+  border-radius: 1.25rem;
+}
+
+.rounded-t-xl {
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+}
+
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Transform Utilities */
+.transform {
+  transform: translateZ(0);
+}
+
+.translate-y-0 {
+  transform: translateY(0%);
+}
+
+.scale-100 {
+  transform: scale(1);
+}
+
+/* Overflow Utilities */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Mix Blend Mode Utilities */
+.mix-blend-screen {
+  mix-blend-mode: screen;
+}
+
+.mix-blend-difference {
+  mix-blend-mode: difference;
+}
+
+.mix-blend-multiply {
+  mix-blend-mode: multiply;
+}
+
+/* Background Size and Position */
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
+/* Object Fit */
+.object-cover {
+  object-fit: cover;
+}
+
+/* Custom Fonts */
+@font-face {
+  font-family: 'EmblemaOne';
+  src: url('/fonts/EmblemaOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom Component Classes */
+.scroll-mask-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-video {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.background-image {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mask-text {
+  font-family: 'EmblemaOne', 'Arial Black', Arial, sans-serif;
+  font-size: 80px;
+  transform-origin: center;
+}
+
+.mask-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mix-blend-mode: screen;
+  transform: translateY(0%);
+}
+
+.mask-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem;
+  text-align: center;
+  color: white;
+}
+
+.list-none {
+  list-style: none;
+}
+
+.list-item {
+  padding: 0.9375rem 0;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  padding-left: 1.875rem;
+}
+
+.list-item:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4ecdc4;
+  font-weight: bold;
+}
+
+/* Text Shadow Utility */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .md\:text-4xl {
+    font-size: 2.5rem;
+  }
+
+  .md\:text-3xl {
+    font-size: 2rem;
+  }
+
+  .md\:h-75 {
+    height: 18.75rem;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sm\:text-3xl {
+    font-size: 1.5rem;
+  }
+
+  .sm\:text-2xl {
+    font-size: 1.25rem;
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.animate-fade-in-description {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.animate-slide-in {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.animate-content-up {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-page-content {
+  height: 100vh;
+  padding: 2rem;
+  background: #f5f5f5;
+}

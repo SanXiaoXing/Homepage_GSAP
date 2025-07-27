@@ -1,5 +1,14 @@
 ---
+{
+	/*
+	@Author: SanXiaoXing
+	@Date: 2025-07-27 19:07:56
+	@Description: 首页
+  */
+}
 
+import "../styles/global.css";
+import MaskScroll from "../components/MaskScroll.astro";
 ---
 
 <html lang="zh-CN">
@@ -8,9 +17,14 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>SanXiaoXing - GSAP遮罩动画</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<main>
+			<MaskScroll
+				videoSrc="https://videos.pexels.com/video-files/19026925/19026925-uhd_2560_1440_25fps.mp4"
+				maskText="SanXiaoXing"
+			/>
+		</main>
 	</body>
 </html>
